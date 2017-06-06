@@ -1,6 +1,6 @@
 FROM resin/rpi-raspbian
 
-RUN apt-get install g++ protobuf-compiler libprotobuf-dev \
+RUN apt-get update && apt-get install g++ protobuf-compiler libprotobuf-dev \
                      libboost-dev curl m4 wget libssl-dev
 
 RUN wget https://download.rethinkdb.com/dist/rethinkdb-2.3.5.tgz && \
