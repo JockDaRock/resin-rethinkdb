@@ -1,4 +1,4 @@
-FROM resin/rpi-raspbian
+FROM resin/raspberrypi3-python
 
 RUN apt-get update && apt-get install g++ protobuf-compiler libprotobuf-dev \
                      libboost-dev curl m4 wget libssl-dev
