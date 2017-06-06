@@ -1,0 +1,18 @@
+FROM resin/raspberrypi3-debian:latest
+
+RUN apt-get install g++ protobuf-compiler libprotobuf-dev \
+                     libboost-dev curl m4 wget libssl-dev
+
+RUN wget https://download.rethinkdb.com/dist/rethinkdb-2.3.5.tgz && \
+                      tar xf rethinkdb-2.3.5.tgz
+
+RUN cd rethinkdb-2.3.5 && ./configure --with-system-malloc --allow-fetch
+
+RUN make ALLOW_WARNINGS=1
+
+make install ALLOW_WARNINGS=1
+
+CMD ["rethinkdb", "--bind", "all"]
+
+EXPOSE 28015 29015 8080
+
